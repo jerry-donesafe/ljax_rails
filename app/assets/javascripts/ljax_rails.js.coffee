@@ -8,6 +8,7 @@ $ ->
       headers: {'X-LJAX': 'true', 'X-LJAX-Container': container.id, 'X-LJAX-Partial': $(container).data('ljax-partial')}
       success: (data) ->
         $(container).replaceWith(data).trigger('ljax:success')
+        eval($(container).data('js-success-callback'))
       error: ->
         $(container).trigger('ljax:error')
       complete: ->
